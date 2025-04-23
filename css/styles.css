@@ -11677,7 +11677,7 @@ tr {
   gap: 12px;
 }
 .page-title.home04 {
-  background-image: url(/images/pexels-photo-1643383.jpeg);
+  background-image: url(../images/pexels-photo-1643383.jpeg);
   padding: 112px 0 207px;
   background-size: contain;
 }
