@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real Estate Form</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+
+        body {
+            background-color: #f5f8fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .main-container {
+            display: flex;
+            min-height: 100vh;
+            background-color: #f5f8fa;
+        }
+
+        .left-content {
+            flex: 1;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .header-container {
+            max-width: 800px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .right-content {
+            flex: 1;
+            background-image: url('/images/1-bhk-flat-interior-design-services.jpeg');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            color: #0a2540;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .blue-text {
+            color: #13961ed0;
+        }
+
+        .benefits {
+            margin: 1.5rem 0 2rem 0;
+        }
+
+        .benefit-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .check-icon {
+            color: #4caf50;
+            margin-right: 0.5rem;
+        }
+
+        .asterisk {
+            color: #13961ed0;
+        }
+
+        .card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            padding: 1.5rem;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.7rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 0.95rem;
+        }
+
+        .option-buttons {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .option-btn {
+            padding: 0.5rem 1rem;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+
+        .option-btn.active {
+            background: #e8f4fe;
+            border-color: #13961ed0;
+            color: #13961ed0;
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .radio-item {
+            display: flex;
+            align-items: center;
+        }
+
+        .radio-item input {
+            margin-right: 0.5rem;
+        }
+
+        .property-types {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .property-type {
+            flex-basis: calc(50% - 0.25rem);
+            padding: 0.6rem 0.5rem;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            text-align: center;
+            transition: all 0.2s;
+        }
+
+        .property-type:hover {
+            border-color: #13961ed0;
+        }
+
+        .additional-types {
+            display: none;
+        }
+
+        .additional-types.show {
+            display: flex;
+        }
+
+        .show-more {
+            color: #13961ed0;
+            cursor: pointer;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            margin-bottom: 1rem;
+            padding-right: 0.5rem;
+        }
+
+        .show-more svg {
+            margin-left: 0.3rem;
+            transition: transform 0.3s ease;
+        }
+
+        .show-more.active svg {
+            transform: rotate(180deg);
+        }
+
+        .btn-primary {
+            width: 100%;
+            background: #13961ed0;
+            color: white;
+            border: none;
+            padding: 0.8rem;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .btn-primary:hover {
+            opacity: .2;
+        }
+
+        .login-link {
+            font-size: 0.85rem;
+            margin: 0.8rem 0;
+            color: #666;
+        }
+
+        .login-link a {
+            color: #13961ed0;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        @media (max-width: 992px) {
+            .main-container {
+                flex-direction: column;
+            }
+            
+            .right-content {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .card {
+                padding: 1.2rem;
+            }
+            
+            .property-type {
+                flex-basis: 100%;
+            }
+            
+            .option-buttons {
+                flex-wrap: wrap;
+            }
+            
+            .option-btn {
+                flex-grow: 1;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .left-content {
+                padding: 1rem;
+            }
+            
+            .option-buttons {
+                flex-direction: column;
+            }
+            
+            .radio-group {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <div class="left-content">
+            <div class="header-container">
+                <h1>Sell or Rent your Property <span class="blue-text">online faster</span> with 99acres.com</h1>
+                
+                <div class="benefits">
+                    <div class="benefit-item">
+                        <svg class="check-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                        <span>Advertise for FREE</span>
+                    </div>
+                    <div class="benefit-item">
+                        <svg class="check-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                        <span>Get unlimited enquiries</span>
+                    </div>
+                    <div class="benefit-item">
+                        <svg class="check-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                        <span>Get shortlisted buyers and tenants <span class="asterisk">*</span></span>
+                    </div>
+                    <div class="benefit-item">
+                        <svg class="check-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                        <span>Assistance in co-ordinating site visits <span class="asterisk">*</span></span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2 class="card-title">Start posting your property, it's free</h2>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Add Basic Details</label>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">You're looking to...</label>
+                        <div class="option-buttons">
+                            <button class="option-btn active">Sell</button>
+                            <button class="option-btn">Rent / Lease</button>
+                            <button class="option-btn">PG</button>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">And it's a...</label>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="residential" name="property-category" checked>
+                                <label for="residential">Residential</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="commercial" name="property-category">
+                                <label for="commercial">Commercial</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="property-types">
+                        <div class="property-type">Flat/Apartment</div>
+                        <div class="property-type">Independent House / Villa</div>
+                        <div class="property-type">Independent / Builder Floor</div>
+                        <div class="property-type">Plot / Land</div>
+                    </div>
+                    
+                    <div class="property-types additional-types">
+                        <div class="property-type">Serviced Apartment</div>
+                        <div class="property-type">Farm House</div>
+                        <div class="property-type">Studio Apartment</div>
+                        <div class="property-type">Other</div>
+                    </div>
+                    
+                    <div class="show-more" id="showMoreBtn">
+                        4 more
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Your contact details for the buyer to reach you</label>
+                        <input type="tel" class="form-control" placeholder="Phone Number">
+                    </div>
+                    
+                    <div class="login-link">
+                        Are you a registered user? <a href="#">Login</a>
+                    </div>
+                    
+                    <button class="btn-primary">Start now</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="right-content">
+            <!-- Background image applied via CSS -->
+        </div>
+    </div>
+
+    <script>
+        // JavaScript for the "Show More" functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const showMoreBtn = document.getElementById('showMoreBtn');
+            const additionalTypes = document.querySelector('.additional-types');
+            
+            showMoreBtn.addEventListener('click', function() {
+                additionalTypes.classList.toggle('show');
+                showMoreBtn.classList.toggle('active');
+                
+                if (additionalTypes.classList.contains('show')) {
+                    showMoreBtn.textContent = 'Show less ';
+                } else {
+                    showMoreBtn.textContent = '4 more ';
+                }
+                
+                // Add the icon back
+                const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+                svg.setAttribute('width', '16');
+                svg.setAttribute('height', '16');
+                svg.setAttribute('viewBox', '0 0 24 24');
+                svg.setAttribute('fill', 'none');
+                svg.setAttribute('stroke', 'currentColor');
+                svg.setAttribute('stroke-width', '2');
+                svg.setAttribute('stroke-linecap', 'round');
+                svg.setAttribute('stroke-linejoin', 'round');
+                
+                const polyline = document.createElementNS('http://www.w3.org/2000/svg', 'polyline');
+                polyline.setAttribute('points', '6 9 12 15 18 9');
+                
+                svg.appendChild(polyline);
+                showMoreBtn.appendChild(svg);
+            });
+            
+            // Make option buttons work
+            const optionBtns = document.querySelectorAll('.option-btn');
+            optionBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    optionBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+            
+            // Make property type selection work
+            const propertyTypes = document.querySelectorAll('.property-type');
+            propertyTypes.forEach(type => {
+                type.addEventListener('click', function() {
+                    propertyTypes.forEach(t => t.style.borderColor = '#ddd');
+                    this.style.borderColor = '#0077cc';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
