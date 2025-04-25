@@ -2324,7 +2324,11 @@ a:hover {
 #menu-mobile-menu li.current-item a {
   color: var(--Primary);
 }
-
+@media screen and (max-width: 575px) {
+  .agency-details .content .info {
+    margin-bottom: -38px;
+  }
+}
 /*------------ footer ---------------- */
 #footer {
   /* background-color: var(--Secondary); */
@@ -10043,7 +10047,7 @@ tr {
   gap: 26px;
 }
 .agency-details .content .info {
-  margin-bottom: 14px;
+  /* margin-bottom: 14px; */
 }
 .agency-details .content .name {
   margin-bottom: 6px;
@@ -11691,7 +11695,8 @@ tr {
 .page-title.home04 {
   background-image: url('../images/pexels-photo-1643383.jpeg');
   padding: 112px 0 207px;
-  background-size: contain;
+  background-size: cover;
+
 }
 .page-title.home04 .heading-title {
   margin-bottom: 63px;

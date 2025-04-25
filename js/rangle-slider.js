@@ -10,13 +10,13 @@ $(document).ready(function () {
         var moneyFormat = wNumb({
             decimals: 0,
             thousand: ",",
-            prefix: "$",
+            prefix: "₹",
         });
         noUiSlider.create(rangeSlider, {
             start: [100, 500000],
             step: 1,
             range: {
-                min: [100],
+                min: [5000],
                 max: [650000],
             },
             format: moneyFormat,
@@ -114,7 +114,7 @@ $(document).ready(function () {
         var moneyFormat = wNumb({
             decimals: 0,
             thousand: ".",
-            postfix: "$",
+            postfix: "₹",
         });
         noUiSlider.create(rangeSlider, {
             start: [0, 10000],
@@ -151,7 +151,7 @@ $(document).ready(function () {
         var moneyFormat = wNumb({
             decimals: 0,
             thousand: ",",
-            prefix: "$",
+            prefix: "₹",
         });
         noUiSlider.create(rangeSlider, {
             start: [100, 500000],
