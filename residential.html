@@ -184,7 +184,7 @@
                                             href="post property.html">Post Property</a>
                                     </div>
                                     <div class="btn-add">
-                                        <a class="tf-btn style-border pd-23" href="#">Login/Registration</a>
+                                        <a class="tf-btn style-border pd-23" href="#" data-bs-toggle="modal" data-bs-target="#modalLogin">Login/Registration</a>
                                     </div>
                                     <div class="mobile-button" data-bs-toggle="offcanvas" data-bs-target="#menu-mobile"
                                         aria-controls="menu-mobile">
@@ -2275,6 +2275,36 @@
     <script defer="" src="../../forms/end-form/build/main.js"></script>
     <!-- /Javascript -->
 
+<!-- Add this JavaScript to handle switching between login and register modals -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Get the modals
+        const loginModal = new bootstrap.Modal(document.getElementById('modalLogin'));
+        const registerModal = new bootstrap.Modal(document.getElementById('modalRegister'));
+        
+        // Handle login to register modal switch
+        document.querySelectorAll('[href="#modalRegister"]').forEach(function(link) {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                loginModal.hide();
+                setTimeout(function() {
+                    registerModal.show();
+                }, 150);
+            });
+        });
+        
+        // Handle register to login modal switch
+        document.querySelectorAll('[href="#modalLogin"]').forEach(function(link) {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                registerModal.hide();
+                setTimeout(function() {
+                    loginModal.show();
+                }, 150);
+            });
+        });
+    });
+    </script>
 </body>
 
 </html>
