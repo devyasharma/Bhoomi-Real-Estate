@@ -2808,7 +2808,7 @@ a:hover {
   color: var(--Primary);
 }
 .tf-btn.bg-color-secondary {
-  background-color: var(--Secondary);
+  background-color: #4da528;
 }
 .tf-btn.style-border {
   border: 1px solid var(--Primary);
